@@ -17,7 +17,6 @@ function P(n) {
 
 var isPentagonalNumber = (function(){
 	var memo = [false];
-
 	return function(number) {
 		var result = memo[number];
 		if (typeof result === 'undefined') {
