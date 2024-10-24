@@ -14,21 +14,21 @@
 // powers of their digits.
 
 function isFifthPowerDigitsNumber(n) {
-	var sum = 0;
-	var number = n;
-	while (number) {
-		sum += Math.pow(number % 10, 5);
-		number = Math.floor(number/10);
-	}
-	return sum === n;
+    var sum = 0;
+    var number = n;
+    while (number) {
+        sum += Math.pow(number % 10, 5);
+        number = Math.floor(number/10);
+    }
+    return sum === n;
 }
 
 function fifthPowerDigitNumbersSum(max) {
-	var sum = 0;
-	while (max-- > 10) {
-		if (isFifthPowerDigitsNumber(max)) sum += max;
-	}
-	return sum;
+    var sum = 0;
+    while (max-- > 10) {
+        if (isFifthPowerDigitsNumber(max)) sum += max;
+    }
+    return sum;
 }
 
 console.log( fifthPowerDigitNumbersSum(1000000) );

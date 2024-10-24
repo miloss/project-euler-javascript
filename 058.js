@@ -20,32 +20,32 @@
 // both diagonals first falls below 10%?
 
 function isPrime(n) {
-  if (n < 2) return false;
-  var q = Math.floor(Math.sqrt(n));
-  for (var i = 2; i <= q; i++) {
-    if (n % i == 0) {
-      return false;
+    if (n < 2) return false;
+    var q = Math.floor(Math.sqrt(n));
+    for (var i = 2; i <= q; i++) {
+        if (n % i == 0) {
+            return false;
+        }
     }
-  }
-  return true;
+    return true;
 }
 
 function minSpiralSize(percent) {
-	var numbers  = [1];
-	var size = 1;
-	var totalNumbers = 1;
-	var totalPrimes = 0;
-	while ((totalPrimes/totalNumbers) >= (percent/100) || !totalPrimes) {
-		size += 2;
-		totalNumbers += 4;
-		var diagonal = 4;
-		while (diagonal--) {
-			if (isPrime(size*size - (size-1)*diagonal)) {// Numbers on diagonal
-				totalPrimes++;
-			}
-		}
-	}
-	return size;
+    var numbers  = [1];
+    var size = 1;
+    var totalNumbers = 1;
+    var totalPrimes = 0;
+    while ((totalPrimes/totalNumbers) >= (percent/100) || !totalPrimes) {
+        size += 2;
+        totalNumbers += 4;
+        var diagonal = 4;
+        while (diagonal--) {
+            if (isPrime(size*size - (size-1)*diagonal)) {// Numbers on diagonal
+                totalPrimes++;
+            }
+        }
+    }
+    return size;
 }
 
 console.log( minSpiralSize(10) );

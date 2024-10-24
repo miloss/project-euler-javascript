@@ -16,46 +16,46 @@
 // the concatenated product of an integer with (1,2, ... , n) where n > 1?
 
 function permutate(array, callback) {
-	function p(array, index, callback) {
-		function swap(a, i1, i2) {
-			var t = a[i1];
-			a[i1] = a[i2];
-			a[i2] = t;
-		}
-		if (index == array.length - 1) {
-			callback(array);
-			return 1;
-		} else {
-			var count = p(array, index + 1, callback);
-			for (var i = index + 1; i < array.length; i++) {
-				swap(array, i, index);
-				count += p(array, index + 1, callback);
-				swap(array, i, index);
-			}
-			return count;
-		}
-	}
-	return p(array, 0, callback);
+    function p(array, index, callback) {
+        function swap(a, i1, i2) {
+            var t = a[i1];
+            a[i1] = a[i2];
+            a[i2] = t;
+        }
+        if (index == array.length - 1) {
+            callback(array);
+            return 1;
+        } else {
+            var count = p(array, index + 1, callback);
+            for (var i = index + 1; i < array.length; i++) {
+                swap(array, i, index);
+                count += p(array, index + 1, callback);
+                swap(array, i, index);
+            }
+            return count;
+        }
+    }
+    return p(array, 0, callback);
 }
 
 function isConcatenatedProduct(string) {
-	var len = string.length;
-	var i, j, num, str;
-	for (i = 1; i <= len/2; i++) {
-		j = 2;
-		num = parseInt(string.substr(0, i), 10);
-		str = num + '' + (num * 2);
-		while (str.length < len && str === string.substr(0, str.length)) {
-			j++;
-			str = str + (num * j) + '';
-		}
-		if (str === string) return true;
-	}
-	return false;
+    var len = string.length;
+    var i, j, num, str;
+    for (i = 1; i <= len/2; i++) {
+        j = 2;
+        num = parseInt(string.substr(0, i), 10);
+        str = num + '' + (num * 2);
+        while (str.length < len && str === string.substr(0, str.length)) {
+            j++;
+            str = str + (num * j) + '';
+        }
+        if (str === string) return true;
+    }
+    return false;
 }
 
 permutate([9,8,7,6,5,4,3,2,1], function(arr){
-	if (isConcatenatedProduct(arr.join(''))) {
-		console.log( parseInt(arr.join(''), 10) );
-	}
+    if (isConcatenatedProduct(arr.join(''))) {
+        console.log( parseInt(arr.join(''), 10) );
+    }
 });

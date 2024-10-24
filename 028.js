@@ -14,16 +14,16 @@
 // formed in the same way?
 
 function diagonalsSum(size) {
-	var sum = 1;
-	var diagonal;
-	while (size > 1) {
-		diagonal = 4;
-		while (diagonal--) {
-			sum += size*size - (size-1)*diagonal;// Numbers on diagonal
-		}
-		size -= 2;
-	}
-	return sum;
+    var sum = 1;
+    var diagonal;
+    while (size > 1) {
+        diagonal = 4;
+        while (diagonal--) {
+            sum += size*size - (size-1)*diagonal;// Numbers on diagonal
+        }
+        size -= 2;
+    }
+    return sum;
 };
 
 console.log( diagonalsSum(1001) );

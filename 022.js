@@ -11,27 +11,27 @@
 // What is the total of all the name scores in the file?
 
 function calculateNameScores(names) {
-	var score = 0, len = names.length;
-	while (len--) {
-		score += (len+1) * wordValue(names[len]);
-	}
-	return score;
+    var score = 0, len = names.length;
+    while (len--) {
+        score += (len+1) * wordValue(names[len]);
+    }
+    return score;
 }
 
 function wordValue(word) {
-	var alphabet = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	var value = 0, length = word.length;
-	while (length--) {
-		value += alphabet.indexOf(word[length]);
-	}
-	return value;
+    var alphabet = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var value = 0, length = word.length;
+    while (length--) {
+        value += alphabet.indexOf(word[length]);
+    }
+    return value;
 }
 
 var fs = require('fs');//Node
 fs.readFile('names.txt', {
-	encoding: 'UTF-8'
+    encoding: 'UTF-8'
 }, function(err, data){
-	var names = data.replace(/"/g, '').split(',');
-	names.sort();
-	console.log( calculateNameScores(names) );
+    var names = data.replace(/"/g, '').split(',');
+    names.sort();
+    console.log( calculateNameScores(names) );
 });

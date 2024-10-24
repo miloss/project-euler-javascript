@@ -18,39 +18,39 @@
 // of two abundant numbers.
 
 var isAbundant = function(){
-	var memo = [];
-	return function(n) {
-		var is = memo[n];
-		if (typeof is !== 'boolean') {
-			var sum = 0;
-			for (var i = 1; i <= n/2; i++) {
-				if (n % i === 0) {
-						sum += i;
-				}
-			}
-			is = sum > n;
-			memo[n] = is;
-		}
-		return is;
-	};
+    var memo = [];
+    return function(n) {
+        var is = memo[n];
+        if (typeof is !== 'boolean') {
+            var sum = 0;
+            for (var i = 1; i <= n/2; i++) {
+                if (n % i === 0) {
+                        sum += i;
+                }
+            }
+            is = sum > n;
+            memo[n] = is;
+        }
+        return is;
+    };
 }();
 
 function isSumOfTwoAbundants(n) {
-	for (var i = 1; i <= n/2; i++) {
-		if (isAbundant(i) && isAbundant(n-i)) {
-			return true;
-		}
-	}
-	return false;
+    for (var i = 1; i <= n/2; i++) {
+        if (isAbundant(i) && isAbundant(n-i)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 function sumNonAbundant(n) {
-	var sum = 0;
-	for (var i = 1; i <= n; i++) {
-		if (isSumOfTwoAbundants(i)) continue;
-		sum += i;
-	}
-	return sum;
+    var sum = 0;
+    for (var i = 1; i <= n; i++) {
+        if (isSumOfTwoAbundants(i)) continue;
+        sum += i;
+    }
+    return sum;
 }
 
 console.log( sumNonAbundant(28123) );

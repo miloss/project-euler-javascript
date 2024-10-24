@@ -9,17 +9,17 @@
 // Find the product abc.
 
 function findTriplets(sum) {
-	var triplets = [];
-	var max = Math.ceil( sum/2 );
-	var a, b, c;
-	for (a = 3; a < max; a++) {
-		for (b = a+1; b < max; b++) {
-			if (Math.pow(sum-b-a, 2) === (Math.pow(a, 2) + Math.pow(b, 2))) {
-				triplets.push( [a, b, sum-b-a] );
-			}
-		}
-	}
-	return triplets;
+    var triplets = [];
+    var max = Math.ceil( sum/2 );
+    var a, b, c;
+    for (a = 3; a < max; a++) {
+        for (b = a+1; b < max; b++) {
+            if (Math.pow(sum-b-a, 2) === (Math.pow(a, 2) + Math.pow(b, 2))) {
+                triplets.push( [a, b, sum-b-a] );
+            }
+        }
+    }
+    return triplets;
 }
 
 console.log( findTriplets(1000) );

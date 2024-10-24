@@ -11,26 +11,26 @@
 // Evaluate the sum of all the amicable numbers under 10000.
 
 function properDivisorSum(n) {
-	var sum = 0;
-	for (var i = 1; i <= n/2; i++) {
-		if (n % i === 0) {
-			sum += i;
-		}
-	}
-	return sum;
+    var sum = 0;
+    for (var i = 1; i <= n/2; i++) {
+        if (n % i === 0) {
+            sum += i;
+        }
+    }
+    return sum;
 }
 
 function findAmicablesSum(n) {
-	var sum = 0;
-	var j;
-	for (var i = 1; i <= n; i++) {
-		j = properDivisorSum(i);
-		if (j > n || j === i) continue;
-		if (properDivisorSum(j) === i) {
-			sum = sum + i + j;
-		}
-	}
-	return sum / 2;
+    var sum = 0;
+    var j;
+    for (var i = 1; i <= n; i++) {
+        j = properDivisorSum(i);
+        if (j > n || j === i) continue;
+        if (properDivisorSum(j) === i) {
+            sum = sum + i + j;
+        }
+    }
+    return sum / 2;
 }
 
 console.log( findAmicablesSum(10000) );

@@ -12,42 +12,42 @@
 // of D?
 
 function P(n) {
-	return (n*(3*n-1))/2;
+    return (n*(3*n-1))/2;
 }
 
 var isPentagonalNumber = (function(){
-	var memo = [false];
-	return function(number) {
-		var result = memo[number];
-		if (typeof result === 'undefined') {
-			var length = memo.length;
-			if (number < length) {
-				result = false;
-				memo[number] = result;
-			} else {
-				var n = 1;
-				while (P(n) < number) {
-					memo[P(n)] = true;
-					n++;
-				}
-				result = number === P(n);
-				memo[number] = result;
-			}
-		}
-		return result;
-	};
+    var memo = [false];
+    return function(number) {
+        var result = memo[number];
+        if (typeof result === 'undefined') {
+            var length = memo.length;
+            if (number < length) {
+                result = false;
+                memo[number] = result;
+            } else {
+                var n = 1;
+                while (P(n) < number) {
+                    memo[P(n)] = true;
+                    n++;
+                }
+                result = number === P(n);
+                memo[number] = result;
+            }
+        }
+        return result;
+    };
 })();
 
 function findMinPentagonalPair(max) {
-	var i, j;
-	for (i = 1; i <= max; i++) {
-		for (j = i; j <= max; j++) {
-			if (isPentagonalNumber(P(i)+P(j)) && isPentagonalNumber(P(j)-P(i))) {
-				return [P(i), P(j)];
-			}
-		}
-	}
-	return null;
+    var i, j;
+    for (i = 1; i <= max; i++) {
+        for (j = i; j <= max; j++) {
+            if (isPentagonalNumber(P(i)+P(j)) && isPentagonalNumber(P(j)-P(i))) {
+                return [P(i), P(j)];
+            }
+        }
+    }
+    return null;
 }
 
 console.log( findMinPentagonalPair(10000) );

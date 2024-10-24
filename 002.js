@@ -8,29 +8,29 @@
 // exceed four million, find the sum of the even-valued terms.
 
 var fibonacci = (function() {
-	var memo = [1, 2];
-	return function(n) {
-		var result = memo[n];
-		if (typeof memo[n] !== 'number') {
-			result = fibonacci(n - 1) + fibonacci(n - 2);
-			memo[n] = result;
-		}
-		return result;
-	};
+    var memo = [1, 2];
+    return function(n) {
+        var result = memo[n];
+        if (typeof memo[n] !== 'number') {
+            result = fibonacci(n - 1) + fibonacci(n - 2);
+            memo[n] = result;
+        }
+        return result;
+    };
 })();
 
 function fibonacciEvenSum(n) {
-	var sum = 0;
-	var i = 0;
-	var number = fibonacci(i);
-	while (number <= n) {
-		if (number % 2 === 0) {
-			sum += number;
-		}
-		i++;
-		number = fibonacci(i);
-	}
-	return sum;
+    var sum = 0;
+    var i = 0;
+    var number = fibonacci(i);
+    while (number <= n) {
+        if (number % 2 === 0) {
+            sum += number;
+        }
+        i++;
+        number = fibonacci(i);
+    }
+    return sum;
 }
 
 

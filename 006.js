@@ -12,20 +12,20 @@
 // natural numbers and the square of the sum.
 
 function sumSquares(n) {
-	var sum = 0;
-	while (n > 0) {
-		sum += Math.pow(n, 2);
-		n--;
-	}
-	return sum;
+    var sum = 0;
+    while (n > 0) {
+        sum += Math.pow(n, 2);
+        n--;
+    }
+    return sum;
 }
 
 function squareSum(n) {
-	return Math.pow( (n*(n+1))/2, 2 );
+    return Math.pow( (n*(n+1))/2, 2 );
 }
 
 function diffss(n) {
-	return squareSum(n) - sumSquares(n);
+    return squareSum(n) - sumSquares(n);
 }
 
 console.log( diffss(100) );

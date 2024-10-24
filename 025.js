@@ -25,20 +25,20 @@
 var PHI = (1 + Math.sqrt(5)) / 2;
 
 function log10(n) {
-	return Math.log(n) / Math.LN10;
+    return Math.log(n) / Math.LN10;
 }
 
 function logfib(n) {
-	// @see Binnet
-	return 1 + Math.floor((n * log10(PHI)) - (log10(5) / 2));
+    // @see Binnet
+    return 1 + Math.floor((n * log10(PHI)) - (log10(5) / 2));
 }
 
 function firstFibonnaciOver(n) {
-	var i = 1;
-	while ( n > logfib(i) ) {
-		i++;
-	}
-	return i;
+    var i = 1;
+    while ( n > logfib(i) ) {
+        i++;
+    }
+    return i;
 }
 
 console.log( firstFibonnaciOver(1000) );

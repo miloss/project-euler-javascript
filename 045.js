@@ -11,31 +11,31 @@
 // Find the next triangle number that is also pentagonal and hexagonal.
 
 function isNumberInSeries(seriesFunc){
-	var memos = [];
-	var n = 1;
-	return function(number) {
-		var length = memos.length;
-		if (number === memos[length-1]) return true;
-		if (number < memos[length-1]) return (memos.indexOf(number) > -1);
-		while (seriesFunc(n) < number) {
-			memos.push( seriesFunc(n) );
-			n++;
-		}
-		memos.push( seriesFunc(n) );
-		return number === seriesFunc(n);
-	};
+    var memos = [];
+    var n = 1;
+    return function(number) {
+        var length = memos.length;
+        if (number === memos[length-1]) return true;
+        if (number < memos[length-1]) return (memos.indexOf(number) > -1);
+        while (seriesFunc(n) < number) {
+            memos.push( seriesFunc(n) );
+            n++;
+        }
+        memos.push( seriesFunc(n) );
+        return number === seriesFunc(n);
+    };
 }
 
 function T(n) {
-	return (n*(n+1))/2;
+    return (n*(n+1))/2;
 }
 
 function P(n) {
-	return (n*(3*n-1))/2;
+    return (n*(3*n-1))/2;
 }
 
 function H(n) {
-	return n*(2*n-1);
+    return n*(2*n-1);
 }
 
 var isPentagonal = isNumberInSeries(P);
@@ -43,10 +43,10 @@ var isPentagonal = isNumberInSeries(P);
 var isHexagonal = isNumberInSeries(H);
 
 function findNextTPH(cnt) {
-	while (!(isPentagonal( T(cnt) ) && isHexagonal( T(cnt) ))) {
-		cnt++;
-	}
-	return T(cnt);
+    while (!(isPentagonal( T(cnt) ) && isHexagonal( T(cnt) ))) {
+        cnt++;
+    }
+    return T(cnt);
 }
 
 console.log( findNextTPH(286) );

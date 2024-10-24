@@ -10,22 +10,22 @@
 // 5, 6, 7, 8 and 9?
 
 function nthPermutation(n, digits) {
-	if (digits.length === 1) {
-		return digits[0] + '';
-	}
-	var fact = factorial(digits.length - 1);
-	var i = Math.floor(n/fact);
-	var first = digits.splice(i, 1);
-	return first + nthPermutation(n - i*fact, digits);
+    if (digits.length === 1) {
+        return digits[0] + '';
+    }
+    var fact = factorial(digits.length - 1);
+    var i = Math.floor(n/fact);
+    var first = digits.splice(i, 1);
+    return first + nthPermutation(n - i*fact, digits);
 };
 
 function factorial(n){
-	var fact = 1;
-	while (n) {
-		fact *= n;
-		n--;
-	}
-	return fact;
+    var fact = 1;
+    while (n) {
+        fact *= n;
+        n--;
+    }
+    return fact;
 };
 
 console.log( nthPermutation(1000000 - 1, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]) );

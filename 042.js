@@ -14,53 +14,53 @@
 // English words, how many are triangle words?
 
 var isTriangleNumber = (function(){
-	var memo = [false];
+    var memo = [false];
 
-	return function(number) {
-		var result = memo[number];
-		if (typeof result === 'undefined') {
-			var length = memo.length;
-			if (number < length) {
-				result = false;
-				memo[number] = result;
-			} else {
-				var n = 1;
-				while ((n*(n+1))/2 < number) {
-					memo[(n*(n+1))/2] = true;
-					n++;
-				}
-				result = number === (n*(n+1))/2;
-				memo[number] = result;
-			}
-		}
-		return result;
-	};
+    return function(number) {
+        var result = memo[number];
+        if (typeof result === 'undefined') {
+            var length = memo.length;
+            if (number < length) {
+                result = false;
+                memo[number] = result;
+            } else {
+                var n = 1;
+                while ((n*(n+1))/2 < number) {
+                    memo[(n*(n+1))/2] = true;
+                    n++;
+                }
+                result = number === (n*(n+1))/2;
+                memo[number] = result;
+            }
+        }
+        return result;
+    };
 })();
 
 function wordValue(word) {
-	var alphabet = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	var value = 0, length = word.length;
-	while (length--) {
-		value += alphabet.indexOf(word[length]);
-	}
-	return value;
+    var alphabet = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var value = 0, length = word.length;
+    while (length--) {
+        value += alphabet.indexOf(word[length]);
+    }
+    return value;
 }
 
 function countTriangleWords(words) {
-	var len = words.length;
-	var count = 0;
-	while (len--) {
-		if (isTriangleNumber(wordValue(words[len]))) {
-			count++;
-		}
-	}
-	return count;
+    var len = words.length;
+    var count = 0;
+    while (len--) {
+        if (isTriangleNumber(wordValue(words[len]))) {
+            count++;
+        }
+    }
+    return count;
 }
 
 var fs = require('fs');//Node
 fs.readFile('words.txt', {
-	encoding: 'UTF-8'
+    encoding: 'UTF-8'
 }, function(err, data){
-	var words = data.replace(/"/g, '').split(',');
-	console.log( countTriangleWords(words) );
+    var words = data.replace(/"/g, '').split(',');
+    console.log( countTriangleWords(words) );
 });

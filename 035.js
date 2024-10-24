@@ -8,41 +8,41 @@
 // How many circular primes are there below one million?
 
 function isPrime(n) {
-  if (n < 2) return false;
-  var q = Math.floor(Math.sqrt(n));
-  for (var i = 2; i <= q; i++) {
-    if (n % i == 0) {
-      return false;
+    if (n < 2) return false;
+    var q = Math.floor(Math.sqrt(n));
+    for (var i = 2; i <= q; i++) {
+        if (n % i == 0) {
+            return false;
+        }
     }
-  }
-  return true;
+    return true;
 }
 
 function isCircularPrime(n) {
-	if (!isPrime(n)) {
-		return false;
-	}
-	var str = n.toString();
-	var len = str.length;
-	while (len--) {
-		if (!isPrime( parseInt(str.substring(len) + str.substring(0, len), 10) )) {
-			return false;
-		}
-	}
-	return true;
+    if (!isPrime(n)) {
+        return false;
+    }
+    var str = n.toString();
+    var len = str.length;
+    while (len--) {
+        if (!isPrime( parseInt(str.substring(len) + str.substring(0, len), 10) )) {
+            return false;
+        }
+    }
+    return true;
 }
 
 function countCirculars(max) {
-	var cnt = 0;
-	if (max >= 2) {
-		cnt++;// '2' is a circular prime
-	}
-	for (var i = 3; i < max; i += 2) {
-		if (isCircularPrime(i)) {
-			cnt++;
-		}
-	}
-	return cnt;
+    var cnt = 0;
+    if (max >= 2) {
+        cnt++;// '2' is a circular prime
+    }
+    for (var i = 3; i < max; i += 2) {
+        if (isCircularPrime(i)) {
+            cnt++;
+        }
+    }
+    return cnt;
 }
 
 console.log( countCirculars(1000000) );

@@ -23,38 +23,38 @@
 // starting with n = 0.
 
 function isPrime(n) {
-  if (n < 2) return false;
-  var q = Math.floor(Math.sqrt(n));
-  for (var i = 2; i <= q; i++) {
-    if (n % i == 0) {
-      return false;
+    if (n < 2) return false;
+    var q = Math.floor(Math.sqrt(n));
+    for (var i = 2; i <= q; i++) {
+        if (n % i == 0) {
+            return false;
+        }
     }
-  }
-  return true;
+    return true;
 }
 
 function primeStreakLength(a, b) {
-	var n = 0;
-	while ( isPrime(n*n + a*n + b) ) {
-		n++;
-	}
-	return n;
+    var n = 0;
+    while ( isPrime(n*n + a*n + b) ) {
+        n++;
+    }
+    return n;
 }
 
 function maxPairLength(start, stop) {
-	var max = 0;
-	var pair = [null, null];
-	var streak;
-	for (var i = start; i <= stop; i++) {
-		for (var j = start; j <= stop; j++) {
-			streak = primeStreakLength(i, j);
-			if (streak > max) {
-				max = streak;
-				pair = [i, j];
-			}
-		}
-	}
-	return pair;
+    var max = 0;
+    var pair = [null, null];
+    var streak;
+    for (var i = start; i <= stop; i++) {
+        for (var j = start; j <= stop; j++) {
+            streak = primeStreakLength(i, j);
+            if (streak > max) {
+                max = streak;
+                pair = [i, j];
+            }
+        }
+    }
+    return pair;
 }
 
 console.log( maxPairLength(-1000, 1000) );

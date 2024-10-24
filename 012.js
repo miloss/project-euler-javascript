@@ -21,47 +21,47 @@
 // divisors?
 
 function triangle(n) {
-	return (n*(n+1))/2;
+    return (n*(n+1))/2;
 }
 
 function primeFactors(n) {
-	var factors = [];
-	var d = 2;
-	while (n > 1) {
-		while (n % d === 0) {
-			factors.push(d);
-			n = n/d;
-		}
-		d++;
-		if (d*d > n && n > 1) {
-			factors.push(n);
-			break;
-		}
-	}
-	return factors;
+    var factors = [];
+    var d = 2;
+    while (n > 1) {
+        while (n % d === 0) {
+            factors.push(d);
+            n = n/d;
+        }
+        d++;
+        if (d*d > n && n > 1) {
+            factors.push(n);
+            break;
+        }
+    }
+    return factors;
 }
 
 function numberOfDivisors(n) {
-	var primes = primeFactors(n);
-	var num = 1;
-	while (primes.length) {
-		var current = primes.shift();
-		var cnt = 1;
-		while (current === primes[0] && primes.length) {
-			primes.shift();
-			cnt++;
-		}
-		num = num * (cnt + 1);
-	}
-	return num;
+    var primes = primeFactors(n);
+    var num = 1;
+    while (primes.length) {
+        var current = primes.shift();
+        var cnt = 1;
+        while (current === primes[0] && primes.length) {
+            primes.shift();
+            cnt++;
+        }
+        num = num * (cnt + 1);
+    }
+    return num;
 }
 
 function firstTriangle(number) {
-	var i = 1;
-	while (numberOfDivisors(triangle(i)) <= number) {
-		i++;
-	}
-	return triangle(i);
+    var i = 1;
+    while (numberOfDivisors(triangle(i)) <= number) {
+        i++;
+    }
+    return triangle(i);
 }
 
 
